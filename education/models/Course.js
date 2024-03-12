@@ -10,6 +10,7 @@ const courseSchema = new Schema(
     days: String,
     room: String,
     building: String,
+    preRequisite: String,
     students: [
       {
         type: Schema.Types.ObjectId,

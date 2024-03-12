@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const plabSchema = new Schema(
+const planSchema = new Schema(
   {
     type: String,
     major: String,
@@ -25,4 +25,4 @@ const plabSchema = new Schema(
   }
 )
 
-module.exports = mongoose.model('Plan', courseSchema)
+module.exports = mongoose.model('Plan', planSchema)
