@@ -19,7 +19,7 @@ const studentSchema = new Schema(
         ref: 'Report'
       }
     ],
-    GPA: String
+    GPA: Number
   },
   {
     timestamps: true
