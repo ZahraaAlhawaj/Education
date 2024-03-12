@@ -11,11 +11,6 @@ async function findAdmin(req, res) {
 }
 
 async function createAdmin(req, res) {
-  try {
-    const newAdmin = await Admin.create(req.body)
-    res.send("Admin Created", newAdmin)
-  } catch (error) {
-    console.log("Error :", error)
-    res.status(500).send({ errorMsg: error.message })
-  }
+  await Admin.create(req.body)
+  res.send("Admin Created")
 }

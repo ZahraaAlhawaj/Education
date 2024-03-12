@@ -14,19 +14,15 @@ async function findAllCourseWorks(req, res) {
 }
 
 async function findCourseWork(req, res) {
-  const courseWork = await CourseWork.findById(req.params.id).populate("courseId").populate("submitions")
+  const courseWork = await CourseWork.findById(req.params.id)
+    .populate("courseId")
+    .populate("submitions")
   res.send(courseWork)
 }
 
 async function createCourseWork(req, res) {
-  try {
-    const newCourseWork = await CourseWork.create(req.body)
-
-    res.send("Course Work Created", newCourseWork)
-  } catch (error) {
-    console.log("Error :", error)
-    res.status(500).send({ errorMsg: error.message })
-  }
+  await CourseWork.create(req.body)
+  res.send("Course Work Created")
 }
 
 async function updateCourseWork(req, res) {

@@ -13,19 +13,15 @@ async function findAllSubmitions(req, res) {
 }
 
 async function findSubmition(req, res) {
-  const submition = await Submition.findById(req.params.id).populate("courseWorkId").populate("studentId")
+  const submition = await Submition.findById(req.params.id)
+    .populate("courseWorkId")
+    .populate("studentId")
   res.send(submition)
 }
 
 async function createSubmition(req, res) {
-  try {
-    const newSubmition = await Submition.create(req.body)
-
-    res.send("submition Created", newSubmition)
-  } catch (error) {
-    console.log("Error :", error)
-    res.status(500).send({ errorMsg: error.message })
-  }
+  await Submition.create(req.body)
+  res.send("submition Created")
 }
 
 async function updateSubmition(req, res) {
@@ -37,4 +33,3 @@ async function updateSubmition(req, res) {
     res.send({ errorMsg: err.message })
   }
 }
-

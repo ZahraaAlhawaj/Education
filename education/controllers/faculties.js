@@ -19,14 +19,8 @@ async function findFaculty(req, res) {
 }
 
 async function createFaculty(req, res) {
-  try {
-    const newFaculty = await Faculty.create(req.body)
-
-    res.send("Faculty Created", newFaculty)
-  } catch (error) {
-    console.log("Error :", error)
-    res.status(500).send({ errorMsg: error.message })
-  }
+  await Faculty.create(req.body)
+  res.send("Faculty Created")
 }
 
 async function updateFaculty(req, res) {
