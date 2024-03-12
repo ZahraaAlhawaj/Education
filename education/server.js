@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 require('dotenv').config()
 
-// require('./config/database')
+require('./config/database')
 let adminRouter = require('./routes/admin')
 let facultyRouter = require('./routes/faculty')
 let courseWorkRouter = require('./routes/courseWork')
