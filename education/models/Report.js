@@ -9,7 +9,7 @@ const reportSchema = new Schema(
     submittions: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Submittion'
+        ref: 'Submition'
       }
     ]
   },
@@ -18,4 +18,4 @@ const reportSchema = new Schema(
   }
 )
 
-module.exports = mongoose.model('report', reportSchema)
+module.exports = mongoose.model('Report', reportSchema)

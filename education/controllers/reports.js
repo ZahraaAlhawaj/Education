@@ -8,7 +8,9 @@ module.exports = {
 
 //find all Comment
 async function findAllReports(req, res) {
-  const report = await Report.find({})
+  const report = await Report.find({}) .populate('course')
+  .populate('student')
+  .populate('submittions')
   res.send(report)
 }
 
