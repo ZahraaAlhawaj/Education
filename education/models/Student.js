@@ -12,7 +12,7 @@ const studentSchema = new Schema(
         ref: 'Course'
       }
     ],
-    plan: { type: Schema.Types.ObjectId, ref: 'plan' },
+    plan: { type: Schema.Types.ObjectId, ref: 'Plan' },
     reports: [
       {
         type: Schema.Types.ObjectId,

@@ -9,7 +9,7 @@ module.exports = {
 
 //find all Comment
 async function findAllStudents(req, res) {
-  const student = await Student.find({})
+  const student = await Student.find({}).populate('plan')
   res.send(student)
 }
 
