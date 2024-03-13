@@ -5,7 +5,8 @@ module.exports = {
   findFaculty,
   createFaculty,
   updateFaculty,
-  deleteFaculty
+  deleteFaculty,
+  addCourseToFaculty
 }
 
 async function findAllFaculities(req, res) {
@@ -36,6 +37,20 @@ async function deleteFaculty(req, res) {
   try {
     await Faculty.findByIdAndDelete(req.params.id)
     res.send('Faculty Deleted')
+  } catch (error) {
+    console.log('This is the error : ' + err)
+    res.send({ errorMsg: err.message })
+  }
+}
+
+async function addCourseToFaculty(req, res) {
+  console.log('Adding course to faculty')
+  try {
+    let courseid = req.body.courseid
+    const faculty = await Faculty.findById(req.params.id).populate('courses')
+    faculty.courses.push(courseid)
+    await faculty.save()
+    res.send(faculty)
   } catch (error) {
     console.log('This is the error : ' + err)
     res.send({ errorMsg: err.message })
