@@ -21,7 +21,7 @@ Join a diverse community of students from around the world, fostering a rich mul
 
 ## 🔗 Live Link:
 
-Click the following link to be redirected to the live version of the code. [UniHub]()
+Click the following link to be redirected to the live version of the code. [UniHub](https://jaded-stone.surge.sh/)
 
 ## 💻 Built With
 
