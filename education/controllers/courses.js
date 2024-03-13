@@ -1,10 +1,12 @@
 const Course = require('../models/Course')
+const Faculty = require('../models/Faculty')
 module.exports = {
   findAllCourses,
   findCourse,
   createCourse,
   updateCourse,
-  deleteCourse
+  deleteCourse,
+  unassignedCourses
 }
 
 //find all Comment
@@ -49,5 +51,24 @@ async function deleteCourse(req, res) {
   } catch (error) {
     console.log('This is the error : ' + err)
     res.send({ errorMsg: err.message })
+  }
+}
+
+async function unassignedCourses(req, res) {
+  try {
+    const allCourses = await Course.find({})
+    const facultyCourses = await Faculty.find({}).populate('courses')
+    const facultyCourseIds = facultyCourses.reduce((ids, faculty) => {
+      return ids.concat(faculty.courses.map((course) => course._id))
+    }, [])
+
+    const coursesNotInFaculty = allCourses.filter(
+      (course) => !facultyCourseIds.includes(course._id)
+    )
+
+    res.json(coursesNotInFaculty)
+  } catch (error) {
+    console.error('Error:', error)
+    res.status(500).json({ errorMsg: error.message })
   }
 }
